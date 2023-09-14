@@ -19,28 +19,29 @@ public class UserController {
     }
 
     @Get("/get/{id}")
-    public Person getbyid (@PathVariable Long id){
-        return userService.getbyid(id);
+    public Person getById(@PathVariable Long id){
+        Person p=userService.getById(id);
+        return p;
     }
 
     @Get("/getall")
-    public List<Person> getallusers (){
-        return userService.getallusers();
+    public List<Person> getAllUsers(){
+        return userService.getAllUsers();
     }
 
     @Delete("/delete/{id}")
-    public String deleteuser(@PathVariable Long id){
+    public String deleteUser(@PathVariable Long id){
         return userService.deleteById(id);
     }
 
     @Put("/put")
-    public Person updateuser(@Body Person p){
-        return userService.update(p);
+    public Person updateUser(@Body Person p){
+        return userService.updateUser(p);
     }
 
 //    @Put("/put")
-//    public HttpResponse updateuser(@Body Person p){
-//        Person person =  userService.updateuser(p);
+//    public HttpResponse updateUser(@Body Person p){
+//        Person person =  userService.updateUser(p);
 //        if(person!=null){
 //            return HttpResponse.ok(person);
 //        }

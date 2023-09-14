@@ -12,12 +12,12 @@ public class Person {
     @Id
     @GeneratedValue
     private Long id;
-    private String username;
-    private String usertype;
+    private String userName;
+    private String userType;
     private String email;
     private String pwd;
-    private String confirmpwd;
-    private Boolean isverified;
+    private String confirmPwd;
+    private Boolean isVerified;
 
     public Long getId() {
         return id;
@@ -27,20 +27,20 @@ public class Person {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public String getUsertype() {
-        return usertype;
+    public String getUserType() {
+        return userType;
     }
 
-    public void setUsertype(String usertype) {
-        this.usertype = usertype;
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getEmail() {
@@ -59,42 +59,42 @@ public class Person {
         this.pwd = pwd;
     }
 
-    public String getConfirmpwd() {
-        return confirmpwd;
+    public String getConfirmPwd() {
+        return confirmPwd;
     }
 
-    public void setConfirmpwd(String confirmpwd) {
-        this.confirmpwd = confirmpwd;
+    public void setConfirmPwd(String confirmPwd) {
+        this.confirmPwd = confirmPwd;
     }
 
-    public Boolean getIsverified() {
-        return isverified;
+    public Boolean getIsVerified() {
+        return isVerified;
     }
 
-    public void setIsverified(Boolean isverified) {
-        this.isverified = isverified;
+    public void setIsVerified(Boolean isVerified) {
+        this.isVerified = isVerified;
     }
 
-    public Person(Long id, String username, String usertype, String email, String pwd, String confirmpwd, Boolean isverified) {
+    public Person(Long id, String userName, String userType, String email, String pwd, String confirmPwd, Boolean isVerified) {
         this.id = id;
-        this.username = username;
-        this.usertype = usertype;
+        this.userName = userName;
+        this.userType = userType;
         this.email = email;
         this.pwd = pwd;
-        this.confirmpwd = confirmpwd;
-        this.isverified = false;
+        this.confirmPwd = confirmPwd;
+        this.isVerified = isVerified;
     }
 
     @Override
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
-                ", usertype='" + usertype + '\'' +
+                ", userName='" + userName + '\'' +
+                ", userType='" + userType + '\'' +
                 ", email='" + email + '\'' +
                 ", pwd='" + pwd + '\'' +
-                ", confirmpwd='" + confirmpwd + '\'' +
-                ", isverified=" + isverified +
+                ", confirmPwd='" + confirmPwd + '\'' +
+                ", isVerified=" + isVerified +
                 '}';
     }
 }

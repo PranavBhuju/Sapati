@@ -10,49 +10,43 @@ import java.util.Optional;
 
 public class UserService {
     @Inject
-    UserRepository userrepository;
-    public Person save(Person person){
-        return userrepository.save(person);
+    UserRepository userRepository;
+
+    public Person save(Person person) {
+        person.setIsVerified(false);
+        return userRepository.save(person);
     }
 
-    public Person getbyid(Long id) {
-        Optional <Person> userId = userrepository.findById(id);
-        if(userId.isPresent()){
+    public Person getById(Long id) {
+        Optional<Person> userId = userRepository.findById(id);
+        if (userId.isPresent()) {
             return userId.get();
         }
         return null;
     }
 
-    public List<Person> getallusers() {
-        Iterable<Person> allusers = userrepository.findAll();
+    public List<Person> getAllUsers() {
+        Iterable<Person> allusers = userRepository.findAll();
         List<Person> userlist = new ArrayList<>();
-        for (Person person:allusers) {
+        for (Person person : allusers) {
             userlist.add(person);
         }
         return userlist;
     }
 
     public String deleteById(Long id) {
-        Optional<Person> person = userrepository.findById(id);
-        if(person.isPresent()){
-            userrepository.deleteById(id);
+        Optional<Person> person = userRepository.findById(id);
+        if (person.isPresent()) {
+            userRepository.deleteById(id);
             return "Deleted successfully";
         }
         return "User does not exist";
     }
 
-//    public Person updateuser(Person p) {
-//        Optional <Person> finduser = userrepository.findById(p.getId());
-//        if(finduser.isPresent()){
-//            return userrepository.update(p);
-//        }
-//        return null;
-//    }
-
-    public Person update(Person p) {
-        Optional <Person> finduser = userrepository.findById(p.getId());
-        if(finduser.isPresent()){
-            return userrepository.update(p);
+    public Person updateUser(Person p) {
+        Optional<Person> findUser = userRepository.findById(p.getId());
+        if (findUser.isPresent()) {
+            return userRepository.update(p);
         }
         return null;
     }
