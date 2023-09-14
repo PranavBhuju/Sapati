@@ -40,4 +40,20 @@ public class UserService {
         }
         return "User does not exist";
     }
+
+//    public Person updateuser(Person p) {
+//        Optional <Person> finduser = userrepository.findById(p.getId());
+//        if(finduser.isPresent()){
+//            return userrepository.update(p);
+//        }
+//        return null;
+//    }
+
+    public Person update(Person p) {
+        Optional <Person> finduser = userrepository.findById(p.getId());
+        if(finduser.isPresent()){
+            return userrepository.update(p);
+        }
+        return null;
+    }
 }
