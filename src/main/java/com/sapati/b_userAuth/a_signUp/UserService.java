@@ -1,7 +1,9 @@
-package com.sapati.services;
-
-import com.sapati.entity.Person;
-import com.sapati.repository.UserRepository;
+package com.sapati.b_userAuth.a_signUp;
+import com.sapati.a_common.useCustom.response.CustomResponse;
+import com.sapati.a_common.entities.Person;
+import com.sapati.a_common.useCustom.exception.CustomException;
+import com.sapati.a_common.repositories.UserRepository;
+import io.micronaut.http.HttpStatus;
 import jakarta.inject.Inject;
 
 import java.util.ArrayList;
@@ -12,9 +14,10 @@ public class UserService {
     @Inject
     UserRepository userRepository;
 
-    public Person save(Person person) {
-        person.setIsVerified(false);
-        return userRepository.save(person);
+    public void save(Person person) {
+        person.setVerification(false);
+        person.setBlacklistStatus(false);
+        userRepository.save(person);
     }
 
     public Person getById(Long id) {
@@ -25,22 +28,22 @@ public class UserService {
         return null;
     }
 
-    public List<Person> getAllUsers() {
-        Iterable<Person> allusers = userRepository.findAll();
+    public CustomResponse getAllUsers() {
+        List<Person> allusers = userRepository.findAll();
         List<Person> userlist = new ArrayList<>();
         for (Person person : allusers) {
             userlist.add(person);
         }
-        return userlist;
+        return new CustomResponse("List: ",HttpStatus.OK,userlist);
     }
 
-    public String deleteById(Long id) {
+    public CustomResponse deleteById(Long id) {
         Optional<Person> person = userRepository.findById(id);
         if (person.isPresent()) {
             userRepository.deleteById(id);
-            return "Deleted successfully";
+            return new CustomResponse("user deleted", HttpStatus.OK);
         }
-        return "User does not exist";
+        throw new CustomException("User does not exist");
     }
 
     public Person updateUser(Person p) {
@@ -50,4 +53,5 @@ public class UserService {
         }
         return null;
     }
+
 }
