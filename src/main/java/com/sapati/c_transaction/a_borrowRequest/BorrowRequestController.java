@@ -18,5 +18,4 @@ public class BorrowRequestController {
         String statusmsg = borrowRequestService.newBorrowRequest(borrow);
         return HttpResponse.ok(statusmsg);
     }
-
 }

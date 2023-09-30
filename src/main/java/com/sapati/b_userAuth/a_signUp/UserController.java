@@ -20,8 +20,7 @@ public class UserController {
 
     @Get("/get/{id}")
     public Person getById(@PathVariable Long id){
-        Person p=userService.getById(id);
-        return p;
+        return userService.getById(id);
     }
 
     @Get("/getall")

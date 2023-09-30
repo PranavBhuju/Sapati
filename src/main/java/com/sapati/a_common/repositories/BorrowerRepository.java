@@ -16,7 +16,7 @@ public interface BorrowerRepository extends CrudRepository<Borrow,Long> {
     Optional<Borrow> findByBorrowerName(String borrowerName);
     Optional<Borrow> findByRequestedAmount(Long requestedAmount);
 
-    @Query("SELECT * FROM public.\"BorrowRequests\"  Where requested_amount <= :lenderBal")
+    @Query("SELECT * FROM public.\"BorrowRequests\" Where requested_amount <= :lenderBal")
     List<Borrow> findAllRequestsLessThanLenderBal(Long lenderBal);
 
 }

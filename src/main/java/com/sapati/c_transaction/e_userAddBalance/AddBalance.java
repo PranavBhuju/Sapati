@@ -1,4 +1,4 @@
-package com.sapati.c_transaction.e_addBalance;
+package com.sapati.c_transaction.e_userAddBalance;
 
 import com.sapati.a_common.entities.Person;
 import com.sapati.a_common.repositories.UserRepository;
