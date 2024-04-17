@@ -17,5 +17,8 @@ public interface TransactionRepository extends CrudRepository<Transaction,Long> 
 
     @Query("UPDATE public.\"Transaction\" SET paymentStatus = : msg WHERE transactionId = :id")
     void setPendingStatus(Long id,String msg);
+
+    @Query("SELECT * FROM public.\"Person\" WHERE transactionId = : numberOfTranssactions ")
+    String findList(Long numberOfTransactions);
 }
 

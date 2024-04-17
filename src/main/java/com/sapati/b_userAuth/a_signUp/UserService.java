@@ -27,7 +27,6 @@ public class UserService {
         }
         return null;
     }
-
     public CustomResponse getAllUsers() {
         List<Person> allusers = userRepository.findAll();
         List<Person> userlist = new ArrayList<>();

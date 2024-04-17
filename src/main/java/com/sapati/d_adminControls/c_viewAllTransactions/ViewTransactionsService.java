@@ -4,6 +4,7 @@ import com.sapati.a_common.entities.Person;
 import com.sapati.a_common.entities.Transaction;
 import com.sapati.a_common.repositories.TransactionRepository;
 import com.sapati.a_common.repositories.UserRepository;
+import com.sapati.a_common.useCustom.exception.CustomException;
 import jakarta.inject.Inject;
 
 import java.util.List;
@@ -21,5 +22,13 @@ public class ViewTransactionsService {
             return transactionRepository.findAll();
         }
         return null;
+    }
+
+    public Optional<Person> findList(Long numberOfTransactions) {
+    Optional<Person> number = userRepository.findById(numberOfTransactions);
+        if (number.isPresent()){
+            return number;
+        }
+        throw new CustomException("User does not exist");
     }
 }

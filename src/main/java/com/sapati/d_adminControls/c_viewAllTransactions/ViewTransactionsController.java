@@ -16,4 +16,10 @@ public class ViewTransactionsController {
     public List<Transaction> getlist(@Body("username") String username){
         return viewTransactionsService.showAllTransactions(username);
     }
+
+    @Post("/showTransactions")
+    public List<Transaction> showlist(@Body ("num")Long numberOfTransactions){
+        return viewTransactionsService.findList(numberOfTransactions);
+    }
 }
+
